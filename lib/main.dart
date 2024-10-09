@@ -16,7 +16,11 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => TaskGroupProvider(),
+          create: (context) {
+            final provider = TaskGroupProvider();
+            provider.listTaskGroups();
+            return provider;
+          }
         ),
       ],
       child: const MyApp(),
